@@ -16,7 +16,14 @@ int main(){
     
     do(fase ){    
         imprime_tab(tab);
-    }while(fase == 1);
+        //Mostrar lista de comandos
+        //Solicitar comando do usuario
+        //Mover P
+        //If(Se P for igual a 7x7){
+        // fase + 1
+        // P volta para 0x0
+        //} 
+    }while(fase == 1); //fase != 3 
 
 
     // printf("|------------FASE %d------------|\n\n", fase);
