@@ -14,9 +14,9 @@ int main(){
                             ' ',' ',' ',' ',' ',' ',' ',' ',
                             ' ',' ',' ',' ',' ',' ',' ','O',};
     
-    while(fase < 4){    
+    do(fase ){    
         imprime_tab(tab);
-    }
+    }while(fase == 1);
 
 
     // printf("|------------FASE %d------------|\n\n", fase);
