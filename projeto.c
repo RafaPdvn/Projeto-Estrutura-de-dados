@@ -14,9 +14,10 @@ int main(){
                             ' ',' ',' ',' ',' ',' ',' ',' ',
                             ' ',' ',' ',' ',' ',' ',' ','O',};
     
-    do(fase ){    
+    do{    
         imprime_tab(tab);
         //Mostrar lista de comandos
+        //sentido do player(P)
         //Solicitar comando do usuario
         //Mover P
         //If(Se P for igual a 7x7){
