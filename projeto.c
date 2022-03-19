@@ -5,25 +5,38 @@
 
 int main(){
     int fase = 1;
-    char tab[8][8] = {'P',' ',' ',' ',' ',' ',' ',' ',
-                            ' ',' ',' ',' ',' ',' ',' ',' ',
-                            ' ',' ',' ',' ',' ',' ',' ',' ',
-                            ' ',' ',' ',' ',' ',' ',' ',' ',
-                            ' ',' ',' ',' ',' ',' ',' ',' ',
-                            ' ',' ',' ',' ',' ',' ',' ',' ',
-                            ' ',' ',' ',' ',' ',' ',' ',' ',
-                            ' ',' ',' ',' ',' ',' ',' ','O',};
-    
-    do(fase ){    
+    char tab[8][8] = {'P','X','X',' ',' ',' ',' ',' ',
+                      ' ',' ',' ',' ',' ',' ',' ',' ',
+                      ' ',' ',' ',' ',' ',' ',' ',' ',
+                      ' ',' ',' ',' ',' ',' ',' ',' ',
+                      ' ',' ',' ',' ',' ',' ',' ',' ',
+                      ' ',' ',' ',' ',' ',' ',' ',' ',
+                      ' ',' ',' ',' ',' ',' ',' ',' ',
+                      ' ',' ',' ',' ',' ',' ',' ','O',};
+
+    char plr[3][3] = {' ',' ',' ',' ','P','>',' ',' ',' '};
+    do{ 
+        //Impimir tabuleiro
+        printf("\n|------------FASE %d-------------|\n\n", fase);   
         imprime_tab(tab);
-        //Mostrar lista de comandos
+        //Imprimir Sentido do Jogador 
+        imprime_player(plr);
+        //Imprimir Lista de comandos
+        imprime_comando(fase);
         //Solicitar comando do usuario
+
+        
         //Mover P
-        //If(Se P for igual a 7x7){
-        // fase + 1
-        // P volta para 0x0
-        //} 
-    }while(fase == 1); //fase != 3 
+        do{
+
+            if(tab[7][7] == 'P'){
+                printf("Parabens!!! Você concluiu a %d° fase\n\n",fase);
+                fase++;
+                tab[7][7] = 'O';
+                tab[0][0] = 'P';
+            }
+        }while(tab[0][0]!='P'); 
+    }while(fase != 1); //fase != 3 
 
 
     // printf("|------------FASE %d------------|\n\n", fase);
@@ -45,5 +58,6 @@ int main(){
     // printf("|   |   |   |   |   |   |   | O |\n");
     // printf("|---|---|---|---|---|---|---|---|\n");
     // testeteste
+    return 0;
 }
 
