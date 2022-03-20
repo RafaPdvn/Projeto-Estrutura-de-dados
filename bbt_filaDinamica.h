@@ -74,22 +74,6 @@ void desenfileirar(Fila *ptr){
 
 }
 
-void impressaC(Fila *ptr){
-    if(!vazio(ptr)){
-        NO* aux;
-        printf("Numeros:\t");
-        while(ptr->inicio != NULL){
-            aux = ptr->inicio;
-            ptr->inicio = aux->prox;
-            printf("%d\t", aux->info);
-            des(aux);
-        }
-        ptr->fim = NULL;
-        printf("\n\n");
-    }else{
-        printf("Erro: fila vazia\n\n");
-    }
-}
 
 
 
