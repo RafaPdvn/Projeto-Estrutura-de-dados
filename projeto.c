@@ -46,22 +46,8 @@ int main(){
         }while(ctrl!=0);
         //Mover P
         do{
-            switch (fase){
-            case 1:
-                switch ((fila->inicio))
-                {
-                case /* constant-expression */:
-                    /* code */
-                    break;
-                
-                default:
-                    break;
-                }
-                break;
-            
-            default:
-                break;
-            }
+            executar_comandos(&fila, elem, tab, plr);
+            imprime_tab(tab);
             if(tab[7][7] == 'P'){
                 printf("Parabens!!! Você concluiu a %d° fase\n\n",fase);
                 fase++;
@@ -71,26 +57,6 @@ int main(){
         }while(tab[0][0]!='P'); 
     }while(fase != 1); //fase != 3 
 
-
-    // printf("|------------FASE %d------------|\n\n", fase);
-    // printf("|---|---|---|---|---|---|---|---|\n");
-    // printf("| p |   |   |   |   |   |   |   |\n");
-    // printf("|---|---|---|---|---|---|---|---|\n");
-    // printf("|   | X | X | X |   |   |   |   |\n");
-    // printf("|---|---|---|---|---|---|---|---|\n");
-    // printf("|   |   |   |   |   |   |   |   |\n");
-    // printf("|---|---|---|---|---|---|---|---|\n");
-    // printf("|   |   |   |   | X |   |   |   |\n");
-    // printf("|---|---|---|---|---|---|---|---|\n");
-    // printf("|   |   |   |   | X |   |   |   |\n");
-    // printf("|---|---|---|---|---|---|---|---|\n");
-    // printf("|   | X |   |   |   |   |   |   |\n");
-    // printf("|---|---|---|---|---|---|---|---|\n");
-    // printf("|   | X |   |   |   |   |   |   |\n");
-    // printf("|---|---|---|---|---|---|---|---|\n");
-    // printf("|   |   |   |   |   |   |   | O |\n");
-    // printf("|---|---|---|---|---|---|---|---|\n");
-    // testeteste
     return 0;
 }
 

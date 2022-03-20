@@ -7,13 +7,13 @@ typedef struct sOpc{
 }Opc;
 
 typedef struct sNof{
-    int info;
+    Opc info;
     struct sNof *prox;
 }NOf;
 
 typedef struct sFila{
-        NO *inicio;
-        NO *fim;
+        NOf *inicio;
+        NOf *fim;
 }Fila;
 
 void inic(Fila *ptr){
@@ -35,8 +35,8 @@ void des(NOf *q){
     free(q);
 }
 
-void enfileirar(Fila *ptr, int elem){
-    NO* novo;
+void enfileirar(Fila *ptr, Opc elem){
+    NOf* novo;
     novo = aloc();
     if(novo != NULL){
         novo->info = elem;
@@ -56,7 +56,7 @@ void enfileirar(Fila *ptr, int elem){
 }
 
 void desenfileirar(Fila *ptr){
-    NO *aux;
+    NOf *aux;
     aux = ptr->inicio;
     if(!vazio(ptr)){
         if(ptr->fim == ptr->inicio){

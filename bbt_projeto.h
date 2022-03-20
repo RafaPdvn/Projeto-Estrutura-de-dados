@@ -1,3 +1,7 @@
+#include "bbt_filaDinamica.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
 
 void imprime_tab(char tab[8][8]){
     printf("|---|---|---|---|---|---|---|---|\n"); 
@@ -118,6 +122,82 @@ void D(char plr[3][3]){
 }
 
 
+void executar_comandos(Fila **fila, int fase, char tab[8][8], char plr[3][3]){
+    switch (fase){
+        case 1:
+            switch ((*fila->inicio)->info.cmd){
+                case 1:
+                    F(tab,plr);
+                    F(tab,plr);
+                    F(tab,plr);
+                    desenfileirar(*fila);
+                    break;
+                case 2:
+                    E(plr);
+                    F(tab,plr);
+                    desenfileirar(*fila);
+                    break;
+                case 3:
+                    D(plr);
+                    F(tab,plr);
+                    desenfileirar(*fila);
+                    break;
+                
+                default:
+                    break;
+            }
+            break;
+        case 2:
+            switch ((*fila->inicio)->info.cmd){
+                case 1:
+                    F(tab,plr);
+                    F(tab,plr);
+                    F(tab,plr);
+                    desenfileirar(*fila);
+                    break;
+                case 2:
+                    E(plr);
+                    F(tab,plr);
+                    desenfileirar(*fila);
+                    break;
+                case 3:
+                    D(plr);
+                    F(tab,plr);
+                    desenfileirar(*fila);
+                    break;
+                
+                default:
+                    break;
+            }
+            break;
+        case 3:
+            switch ((*fila->inicio)->info.cmd){
+                case 1:
+                    F(tab,plr);
+                    F(tab,plr);
+                    F(tab,plr);
+                    desenfileirar(*fila);
+                    break;
+                case 2:
+                    E(plr);
+                    F(tab,plr);
+                    desenfileirar(*fila);
+                    break;
+                case 3:
+                    D(plr);
+                    F(tab,plr);
+                    desenfileirar(*fila);
+                    break;
+                
+                default:
+                    break;
+            }
+            break;
+        
+            default:
+                break;
+    }
+}
 
 
 
