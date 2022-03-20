@@ -3,7 +3,7 @@
 #include <locale.h>
 
 typedef struct sOpc{
-    int cmd
+    int cmd;
     int vez;
 }Opc;
 
@@ -144,28 +144,28 @@ void F(char tab[8][8], char plr[3][3]){
             tab[l][c] = ' ';
             tab[l][c+1] = 'P';
         }else{
-            printf("Impossivel mover nesta direção!\n\n");
+            printf("Impossivel mover nesta direï¿½ï¿½o!\n\n");
         }
     }else if(plr[0][1] != ' '){ //Movimenta para Cima
         if((l-1 > 0)&&(tab[l-1][c]!='X')){
             tab[l][c] = ' ';
             tab[l-1][c] = 'P';
         }else{
-            printf("Impossivel mover nesta direção!\n\n");
+            printf("Impossivel mover nesta direï¿½ï¿½o!\n\n");
         }
     }else if(plr[1][0] != ' '){ //Movimenta a Esquerda
         if((c-1 > 0)&&(tab[l][c-1]!='X')){
             tab[l][c] = ' ';
             tab[l][c-1] = 'P';
         }else{
-            printf("Impossivel mover nesta direção!\n\n");
+            printf("Impossivel mover nesta direï¿½ï¿½o!\n\n");
         }
     }else if(plr[2][1] != ' '){ //Movimenta para Baixo
         if((l+1 < 8)&&(tab[l+1][c]!='X')){
             tab[l][c] = ' ';
             tab[l+1][c]= 'P';
         }else{
-            printf("Impossivel mover nesta direção!\n\n");
+            printf("Impossivel mover nesta direï¿½ï¿½o!\n\n");
         }
     }
 }
@@ -205,47 +205,70 @@ void D(char plr[3][3]){
 
 void executar_comandos(Fila *fila, int fase, char tab[8][8], char plr[3][3]){
     switch (fase){
+        //Comandos fase 1
         case 1:
             switch ((fila->inicio)->info.cmd){
                 case 1:
-                    for(int i = (fila->inicio)->info.vez; i == 0; i--){
+                    for(int i = (fila->inicio)->info.vez ; i > 0; i--){
                         F(tab,plr);
                         F(tab,plr);
-                        F(tab,plr);
-                        desenfileirar(fila);
                     }
+                    desenfileirar(fila);
                     break;
                 case 2:
-                    E(plr);
-                    F(tab,plr);
+                    for(int i = (fila->inicio)->info.vez ; i > 0; i--){
+                        F(tab,plr);
+                        E(plr);
+                        F(tab,plr);   
+                    }
                     desenfileirar(fila);
                     break;
                 case 3:
-                    D(plr);
-                    F(tab,plr);
+                    for(int i = (fila->inicio)->info.vez ; i > 0; i--){    
+                        D(plr);
+                        F(tab,plr);
+                        F(tab,plr);
+                    }
                     desenfileirar(fila);
                     break;
-
+                case 4:
+                    for(int i = (fila->inicio)->info.vez ; i > 0; i--){      
+                        F(tab,plr);
+                        D(plr);
+                    }
+                    desenfileirar(fila);
+                    break;
                 default:
                     break;
             }
             break;
+        //Comandos fase 2
         case 2:
             switch ((fila->inicio)->info.cmd){
                 case 1:
-                    F(tab,plr);
-                    F(tab,plr);
-                    F(tab,plr);
+                    for(int i = (fila->inicio)->info.vez ; i > 0; i--){      
+                        D(plr);
+                        F(tab,plr);
+                        F(tab,plr);
+                        E(plr);
+                    }
                     desenfileirar(fila);
                     break;
                 case 2:
-                    E(plr);
-                    F(tab,plr);
+                    for(int i = (fila->inicio)->info.vez ; i > 0; i--){      
+                        D(plr);
+                        F(tab,plr);
+                        E(plr);
+                        F(tab,plr);
+                    }
                     desenfileirar(fila);
                     break;
                 case 3:
-                    D(plr);
-                    F(tab,plr);
+                    for(int i = (fila->inicio)->info.vez ; i > 0; i--){      
+                        F(tab,plr);
+                        F(tab,plr);
+                        F(tab,plr);
+                    }
                     desenfileirar(fila);
                     break;
 
@@ -253,22 +276,40 @@ void executar_comandos(Fila *fila, int fase, char tab[8][8], char plr[3][3]){
                     break;
             }
             break;
+        //Comandos fase 3
         case 3:
             switch ((fila->inicio)->info.cmd){
                 case 1:
-                    F(tab,plr);
-                    F(tab,plr);
-                    F(tab,plr);
+                    for(int i = (fila->inicio)->info.vez ; i > 0; i--){      
+                        F(tab,plr);
+                        F(tab,plr);
+                        F(tab,plr);
+                    }
                     desenfileirar(fila);
                     break;
                 case 2:
-                    E(plr);
-                    F(tab,plr);
+                    for(int i = (fila->inicio)->info.vez ; i > 0; i--){      
+                        D(plr);
+                        F(tab,plr);
+                        F(tab,plr);
+                        F(tab,plr);
+                    }
                     desenfileirar(fila);
                     break;
                 case 3:
-                    D(plr);
-                    F(tab,plr);
+                    for(int i = (fila->inicio)->info.vez ; i > 0; i--){      
+                        F(tab,plr);
+                        E(plr);
+                    }
+                    desenfileirar(fila);
+                    break;
+                case 4:
+                    for(int i = (fila->inicio)->info.vez ; i > 0; i--){      
+                        E(plr);
+                        E(plr);
+                        F(tab,plr);
+                        F(tab,plr);
+                    }
                     desenfileirar(fila);
                     break;
 
