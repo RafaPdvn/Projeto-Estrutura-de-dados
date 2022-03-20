@@ -49,7 +49,7 @@ void imprime_comando(int fase){
 }
 
 
-void F(char tab[8][8], char cmd[3][3]){
+void F(char tab[8][8], char plr[3][3]){
     int c, l;
     
     for(int i = 0; i < 8; i++){      
@@ -62,22 +62,22 @@ void F(char tab[8][8], char cmd[3][3]){
         }
     }
     
-    if(cmd[1][2] != ' '){ //Movimenta a Direita
+    if(plr[1][2] != ' '){ //Movimenta a Direita
         if((c+1 < 8)&&(tab[l][c+1]!='X'))
             tab[l][c+1] = 'P';
         else
             printf("Impossivel mover nesta direção!\n\n");
-    }else if(cmd[0][1] != ' '){ //Movimenta para Cima
+    }else if(plr[0][1] != ' '){ //Movimenta para Cima
         if((l-1 > 0)&&(tab[l-1][c]!='X'))
             tab[l-1][c] = 'P';
         else
             printf("Impossivel mover nesta direção!\n\n");
-    }else if(cmd[1][0] != ' '){ //Movimenta a Esquerda
+    }else if(plr[1][0] != ' '){ //Movimenta a Esquerda
         if((c-1 > 0)&&(tab[l][c-1]!='X'))
             tab[l][c-1] = 'P';
         else
             printf("Impossivel mover nesta direção!\n\n");
-    }else if(cmd[2][1] != ' '){ //Movimenta para Baixo
+    }else if(plr[2][1] != ' '){ //Movimenta para Baixo
         if((l+1 < 8)&&(tab[l+1][c]!='X'))
             tab[l+1][c]= 'P';
         else
@@ -85,51 +85,37 @@ void F(char tab[8][8], char cmd[3][3]){
     }
 }
 
-void E(char cmd[3][3]){
-    if(cmd[1][2] != ' '){ 
-        cmd[1][2] = ' ';
-        cmd[0][1] = '^';
-    }else if(cmd[0][1] != ' '){ 
-        cmd[0][1] = ' ';
-        cmd[1][0] = '<';
-    }else if(cmd[1][0] != ' '){ 
-        cmd[1][0] = ' ';
-        cmd[2][1] = 'v';
-    }else if(cmd[2][1] != ' '){ 
-        cmd[2][1] = ' ';
-        cmd[1][2] = '>';
+void E(char plr[3][3]){
+    if(plr[1][2] != ' '){ 
+        plr[1][2] = ' ';
+        plr[0][1] = '^';
+    }else if(plr[0][1] != ' '){ 
+        plr[0][1] = ' ';
+        plr[1][0] = '<';
+    }else if(plr[1][0] != ' '){ 
+        plr[1][0] = ' ';
+        plr[2][1] = 'v';
+    }else if(plr[2][1] != ' '){ 
+        plr[2][1] = ' ';
+        plr[1][2] = '>';
     }
 }
 
-void D(char cmd[3][3]){
-    if(cmd[1][2] != ' '){ 
-        cmd[1][2] = ' ';
-        cmd[2][1] = 'v';
-    }else if(cmd[2][1] != ' '){ 
-        cmd[2][1] = ' ';
-        cmd[1][0] = '<';
-    }else if(cmd[1][0] != ' '){ 
-        cmd[1][0] = ' ';
-        cmd[0][1] = '^';
-    }else if(cmd[0][1] != ' '){ 
-        cmd[0][1] = ' ';
-        cmd[1][2] = '>';
+void D(char plr[3][3]){
+    if(plr[1][2] != ' '){ 
+        plr[1][2] = ' ';
+        plr[2][1] = 'v';
+    }else if(plr[2][1] != ' '){ 
+        plr[2][1] = ' ';
+        plr[1][0] = '<';
+    }else if(plr[1][0] != ' '){ 
+        plr[1][0] = ' ';
+        plr[0][1] = '^';
+    }else if(plr[0][1] != ' '){ 
+        plr[0][1] = ' ';
+        plr[1][2] = '>';
     }
 }
-
-typedef struct {
-    int opcao, vezes;
-};
-
-typedef struct sNOf{
-    int opcao, vezes;
-    struct sFila *prox;
-}NOf;
-
-typedef struct sFila{
-    int opcao, vezes;
-    struct sFila *prox;
-}Fila;
 
 
 
