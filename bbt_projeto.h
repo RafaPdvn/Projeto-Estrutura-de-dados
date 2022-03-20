@@ -13,7 +13,7 @@ void imprime_tab(char tab[8][8]){
 }
 
 void imprime_player(char plr[3][3]){
-    printf("Sentido do Player:\n");  
+    printf("Sentido do Player:\n"); 
     for(int i = 0; i < 3; i++){      
         printf("|");
         for(int j = 0; j < 3; j++){
@@ -28,19 +28,19 @@ void imprime_comando(int fase){
     printf("\nLista de comandos:\n");
     switch (fase){
             case 1:
-                printf("1) |F| |F| |F|\n");
-                printf("2) |E| |F|\n");
-                printf("3) |D| |F|\n");
+                printf("1) |F| |F| \n");
+                printf("2) |F| |E| |F|\n");
+                printf("3) |D| |F| |F|\n");
                 break;
             case 2:
-                printf("1) |F| |F| |F|\n");
-                printf("2) |E| |F|\n");
-                printf("3) |D| |F|\n");
+                printf("1) |F| |F| \n");
+                printf("2) |F| |E| |F|\n");
+                printf("3) |D| |F| |F|\n");
                 break;
             case 3:
-                printf("1) |F| |F| |F|\n");
-                printf("2) |E| |F|\n");
-                printf("3) |D| |F|\n");
+                printf("1) |F| |F| \n");
+                printf("2) |F| |E| |F|\n");
+                printf("3) |D| |F| |F|\n");
                 break;
         
             default:
