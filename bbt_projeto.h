@@ -103,9 +103,10 @@ int vazia(NOp *topo)
 void empilhar(NOp** topo, Opc elem){
     NOp *novo;
     novo = alocarNo();
-    if(novo != NULL){
-        novo -> info = elem;
-        novo -> prox = *topo;
+    if(novo != NULL){    
+        novo->info.cmd = elem.cmd;
+        novo->info.vez = elem.vez;
+        novo->prox = *topo;
         *topo = novo;
 
     }else{
@@ -250,7 +251,7 @@ void D(char plr[3][3]){
     }
 }
 
-void executar_comando1(Fila *fila, int fase, char tab[8][8], char plr[3][3]){
+void executar_comando1(Fila *fila, char tab[8][8], char plr[3][3]){
     switch ((fila->inicio)->info.cmd){
         case 1:
             for(int i = (fila->inicio)->info.vez ; i > 0; i--){
@@ -287,41 +288,116 @@ void executar_comando1(Fila *fila, int fase, char tab[8][8], char plr[3][3]){
     }
 }
 
-void executar_comando2(NOp *pilha, int fase, char tab[8][8], char plr[3][3]){
+void executar_comando2(NOp *pilha, char tab[8][8], char plr[3][3]){
     switch (pilha->info.cmd){
         case 1:
-            for(int i = pilha->info.vez ; i > 0; i--){
+            for(int i = pilha->info.vez; i > 0; i--){
+                D(plr);
                 F(tab,plr);
                 F(tab,plr);
+                E(plr);
             }
-            desenfileirar(pilha);
             break;
         case 2:
             for(int i = pilha->info.vez ; i > 0; i--){
+                D(plr);
                 F(tab,plr);
                 E(plr);
                 F(tab,plr);
             }
-            desenfileirar(pilha);
             break;
         case 3:
             for(int i = pilha->info.vez ; i > 0; i--){
-                D(plr);
+                F(tab,plr);
                 F(tab,plr);
                 F(tab,plr);
             }
-            desenfileirar(pilha);
             break;
         case 4:
             for(int i = pilha->info.vez ; i > 0; i--){
-                F(tab,plr);
+                E(plr);
                 D(plr);
+                E(plr);
             }
-            desenfileirar(pilha);
             break;
         default:
             break;
     }
+}
+
+void executar_comando3(Fila *fila, NOp *pilha, int fase, char tab[8][8], char plr[3][3]){
+    if(fase = 2){
+        switch ((fila->inicio)->info.cmd){
+        case 1:
+            for(int i = (fila->inicio)->info.vez ; i > 0; i--){
+                F(tab,plr);
+                F(tab,plr);
+            }
+            desenfileirar(fila);
+            break;
+        case 2:
+            for(int i = (fila->inicio)->info.vez ; i > 0; i--){
+                D(plr);
+                F(tab,plr);
+                F(tab,plr);
+                F(tab,plr);
+            }
+            desenfileirar(fila);
+            break;
+        case 3:
+            for(int i = (fila->inicio)->info.vez ; i > 0; i--){
+                E(plr);
+                F(tab,plr);
+            }
+            desenfileirar(fila);
+            break;
+        case 4:
+            for(int i = (fila->inicio)->info.vez ; i > 0; i--){
+                E(plr);
+                E(plr);
+                F(tab,plr);
+                F(tab,plr);
+            }
+            desenfileirar(fila);
+            break;
+        default:
+            break;
+        }   
+    }else{
+        switch (pilha->info.cmd){
+        case 1:
+            for(int i = pilha->info.vez; i > 0; i--){
+                F(tab,plr);
+                F(tab,plr); 
+            }
+            break;
+        case 2:
+            for(int i = pilha->info.vez ; i > 0; i--){
+                D(plr);
+                F(tab,plr);
+                F(tab,plr);
+                F(tab,plr);
+            }
+            break;
+        case 3:
+            for(int i = pilha->info.vez ; i > 0; i--){
+                E(plr);
+                F(tab,plr);
+            }
+            break;
+        case 4:
+            for(int i = pilha->info.vez ; i > 0; i--){
+                E(plr);
+                E(plr);
+                F(tab,plr);
+                F(tab,plr);
+            }
+            break;
+        default:
+            break;
+        }
+    }
+    
 }
 
 
